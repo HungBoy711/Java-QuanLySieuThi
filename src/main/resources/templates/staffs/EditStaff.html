@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Hệ thống quản lý siêu thị</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+        WebFont.load({
+            google: { families: ["Public Sans:300,400,500,600,700"] },
+            custom: {
+                families: [
+                    "Font Awesome 5 Solid",
+                    "Font Awesome 5 Regular",
+                    "Font Awesome 5 Brands",
+                    "simple-line-icons",
+                ],
+                urls: ["../assets/css/fonts.min.css"],
+            },
+            active: function () {
+                sessionStorage.fonts = true;
+            },
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body class="bg-light">
+	<div style="margin-top:60px;" class="d-flex justify-content-center align-items-center vh-100">
+		<div class="card shadow-lg p-4" style="width: 100%; max-width: 400px;margin-top:50px;">
+			<h4 class="text-center mb-4">Sửa thông tin nhân sự</h4>
+			<form method="post" enctype="multipart/form-data" th:object="${staffDto}">
+			<div  class="mb-3" style="display:none;">
+					<label for="name" class="form-label">ID</label> <input
+						 type="text" class="form-control"
+						th:field="${staff.id}" >
+				</div>
+				<div  class="mb-3">
+					<label for="name" class="form-label">Tên nhân sự</label> <input
+						 type="text" class="form-control"
+						th:field="${staffDto.staffname}" >
+						<p th:if="${#fields.hasErrors('staffname')}" th:errorclass="text-danger" th:errors="${staffDto.staffname}"></p>
+				</div>
+				<div class="mb-3">
+					<label for="gender" class="form-label">Chức vụ</label>
+					 <select
+						class="form-select"  th:field="${staffDto.position}">
+						<option value="" disabled selected>--Chọn chức vụ--</option>
+						<option value="Quản lý">Quản lý</option>
+						<option value="Nhân viên">Nhân viên</option>
+						<option value="Lao công">Lao công</option>
+					</select>
+					<p th:if="${#fields.hasErrors('position')}" th:errorclass="text-danger" th:errors="${staffDto.position}"></p>
+				</div>
+				<div class="mb-3">
+					<label for="name" class="form-label">Ngày sinh</label> <input
+						type="date" class="form-control"
+						th:field="${staffDto.birthdate}" >
+					<p th:if="${#fields.hasErrors('birthdate')}" th:errorclass="text-danger" th:errors="${staffDto.birthdate}"></p>
+				</div>
+				<div class="mb-3">
+					<label for="gender" class="form-label">Giới tính</label>
+					 <select
+						class="form-select"  th:field="${staffDto.gender}">
+						<option value="" disabled selected>--Chọn giới tính--</option>
+						<option value="Nam">Nam</option>
+						<option value="Nữ">Nữ</option>
+						<option value="Khác">Khác</option>
+					</select>
+					<p th:if="${#fields.hasErrors('gender')}" th:errorclass="text-danger" th:errors="${staffDto.gender}"></p>
+				</div>
+				<div class="mb-3">
+					<label for="name" class="form-label">Quê quán</label> <input
+						 type="text" class="form-control"
+						th:field="${staffDto.hometown}" >
+						<p th:if="${#fields.hasErrors('hometown')}" th:errorclass="text-danger" th:errors="${staffDto.hometown}"></p>
+				</div>
+				<div class="mb-3">
+					<label for="name" class="form-label">Số điện thoại</label> <input
+						 type="text" class="form-control"
+						th:field="${staffDto.phone}" >
+						<p th:if="${#fields.hasErrors('phone')}" th:errorclass="text-danger" th:errors="${staffDto.phone}"></p>
+				</div>
+				<div class="mb-3">
+					<label for="name" class="form-label">Email</label> <input
+						 type="text" class="form-control"
+						th:field="${staffDto.email}" >
+						<p th:if="${#fields.hasErrors('email')}" th:errorclass="text-danger" th:errors="${staffDto.email}"></p>
+				</div>
+				<div class="mb-3 ">
+					<img th:src="@{'/images/' + ${staff.imagename}}" alt="..." width="100">
+				</div>
+				<div class="mb-3">
+					<label for="name" class="form-label">Ảnh</label> 
+					<input th:field="${staffDto.imagename}"
+						 type="file" class="form-control">
+						 <p th:if="${#fields.hasErrors('imagename')}" th:errorclass="text-danger" th:errors="${staffDto.imagename}"></p>
+				</div>
+				<div class="d-flex justify-content-between">
+					<button type="button" class="btn btn-outline-dark" onclick="window.history.back()">Hủy</button>
+					<button type="submit" class="btn btn-primary">Xác nhận</button>
+				</div>
+				
+			</form>
+		</div>
+	</div>
+  <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="../assets/js/setting-demo2.js"></script>
+	<!-- Bootstrap JS -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

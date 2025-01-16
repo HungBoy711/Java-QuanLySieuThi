@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Hệ thống quản lý siêu thị</title>
+<meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+	name="viewport" />
+
+<!-- Fonts and icons -->
+<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+<script>
+	WebFont.load({
+		google : {
+			families : [ "Public Sans:300,400,500,600,700" ]
+		},
+		custom : {
+			families : [ "Font Awesome 5 Solid", "Font Awesome 5 Regular",
+					"Font Awesome 5 Brands", "simple-line-icons", ],
+			urls : [ "../assets/css/fonts.min.css" ],
+		},
+		active : function() {
+			sessionStorage.fonts = true;
+		},
+	});
+</script>
+
+<!-- CSS Files -->
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../assets/css/plugins.min.css" />
+<link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link rel="stylesheet" href="../assets/css/demo.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+
+</head>
+<style>
+.vh-100 {
+	height: 100vh; /* Chiều cao 100% màn hình */
+}
+
+.d-flex {
+	display: flex; /* Kích hoạt Flexbox */
+}
+
+.justify-content-center {
+	justify-content: center; /* Căn giữa theo chiều ngang */
+}
+
+.align-items-center {
+	align-items: center; /* Căn giữa theo chiều dọc */
+}
+</style>
+<body>
+	<!-- Section: Design Block -->
+	<section class="vh-100">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-7 px-0 d-none d-sm-block">
+					<img
+						src="../images/St.jpeg"
+						alt="Login image" class="w-100 vh-100"
+						style="object-fit: cover; object-position: left;">
+				</div>
+				<div
+					class="col-sm-5 text-black d-flex justify-content-center align-items-center vh-100"
+					style="background-color: white;">
+					<div>
+						<div class="px-5 ms-xl-4">
+							<span class="h1 fw-bold mb-0">Hệ thống quản lý siêu thị
+								mini</span>
+						</div>
+
+						<div
+							class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+							<form class="" style="width: 23rem;" action="/login" method="post">
+								<div data-mdb-input-init class="form-outline mb-4">
+									<label class="form-label" for="form2Example18">Tên tài
+										khoản</label> <input type="text" name="username"
+										class="form-control form-control-lg" />
+								</div>
+
+								<div data-mdb-input-init class="form-outline mb-4">
+									<label class="form-label" for="form2Example28">Mật khẩu</label>
+									<input type="password" name="password"
+										class="form-control form-control-lg" />
+								</div>
+								<div data-mdb-input-init class="form-outline mb-4">
+									<label class="form-label" for="form2Example28">Chức vụ</label>
+									<select name="role" class="form-select"
+										aria-label="Default select example">
+										<option value="Quản lý">Quản lý</option>
+										<option value="Nhân viên">Nhân viên</option>
+									</select>
+								</div>
+								<div data-mdb-input-init class="form-outline mb-4">
+									<button type="submit"
+										class="btn btn-primary form-control form-control-lg">Đăng
+										nhập</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section: Design Block -->
+	<!-- Core JS Files -->
+	<script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+	<script src="../assets/js/core/popper.min.js"></script>
+	<script src="../assets/js/core/bootstrap.min.js"></script>
+
+	<!-- jQuery Scrollbar -->
+	<script
+		src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<!-- Datatables -->
+	<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+	<!-- Kaiadmin JS -->
+	<script src="../assets/js/kaiadmin.min.js"></script>
+	<!-- Kaiadmin DEMO methods, don't include it in your project! -->
+	<script src="../assets/js/setting-demo2.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Hệ thống quản lý siêu thị</title>
+<meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+	name="viewport" />
+
+
+<!-- Fonts and icons -->
+<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+<script>
+	WebFont.load({
+		google : {
+			families : [ "Public Sans:300,400,500,600,700" ]
+		},
+		custom : {
+			families : [ "Font Awesome 5 Solid", "Font Awesome 5 Regular",
+					"Font Awesome 5 Brands", "simple-line-icons", ],
+			urls : [ "../assets/css/fonts.min.css" ],
+		},
+		active : function() {
+			sessionStorage.fonts = true;
+		},
+	});
+</script>
+
+<!-- CSS Files -->
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../assets/css/plugins.min.css" />
+<link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link rel="stylesheet" href="../assets/css/demo.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- Sidebar -->
+		<div class="sidebar" data-background-color="dark">
+			<div class="sidebar-logo">
+				<!-- Logo Header -->
+				<div class="logo-header" data-background-color="dark2">
+					<a href="/homes" class="logo"> <img
+						src="../images/logoAdmin.png" alt="navbar brand"
+						class="navbar-brand" width="193" height="50" />
+					</a>
+					<div class="nav-toggle">
+						<button class="btn btn-toggle toggle-sidebar">
+							<i class="gg-menu-right"></i>
+						</button>
+						<button class="btn btn-toggle sidenav-toggler">
+							<i class="gg-menu-left"></i>
+						</button>
+					</div>
+					<button class="topbar-toggler more">
+						<i class="gg-more-vertical-alt"></i>
+					</button>
+				</div>
+				<!-- End Logo Header -->
+			</div>
+			<div class="sidebar-wrapper scrollbar scrollbar-inner">
+				<div class="sidebar-content">
+					<ul class="nav nav-secondary">
+						<li class="nav-item"><a href="/homes" aria-expanded="false">
+								<i class="fa-sharp fa-solid fa-chart-line"
+								style="color: #b9babf"></i>
+								<p>Thống kê và báo cáo</p>
+						</a></li>
+
+						<li class="nav-item"><a data-bs-toggle="collapse"
+							href="#base"> <i class="fa-sharp fa-solid fa-shop"
+								style="color: #b9babf;"></i>
+								<p>Siêu thị</p> <span class="caret"></span>
+						</a>
+							<div class="collapse show" id="base">
+								<ul class="nav nav-collapse">
+									<li><a href="/suppliers"> <span class="sub-item">Nhà
+												cung cấp</span>
+									</a></li>
+									<li class="active"><a href="/categories"> <span
+											class="sub-item">Danh mục hàng hóa</span>
+									</a></li>
+									<li><a href="/products"> <span class="sub-item">Hàng
+												hóa</span>
+									</a></li>
+									<li><a href="/staffs"> <span class="sub-item">Nhân
+												sự</span>
+									</a></li>
+
+								</ul>
+							</div></li>
+						<li class="nav-item"><a data-bs-toggle="collapse"
+							href="#sidebarLayouts"> <i
+								class="fa-sharp fa-solid fa-table-list" style="color: #b9babf;"></i>
+								<p>Hệ thống</p> <span class="caret"></span>
+						</a>
+							<div class="collapse" id="sidebarLayouts">
+								<ul class="nav nav-collapse">
+									<li><a href="/users"> <span
+											class="sub-item">Quản lý tài khoản</span>
+									</a></li>
+									<li><a href="../icon-menu.html"> <span
+											class="sub-item">Cài đặt</span>
+									</a></li>
+								</ul>
+							</div></li>
+
+						<li class="nav-item"><a href="/" aria-expanded="false"> <i
+								class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
+								<p>Đăng xuất</p>
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- End Sidebar -->
+
+		<div class="main-panel">
+			<div class="main-header">
+				<div class="main-header-logo">
+					<!-- Logo Header -->
+					<div class="logo-header" data-background-color="dark">
+						<a href="../index.html" class="logo"> <img
+							src="../assets/img/kaiadmin/logo_light.svg" alt="navbar brand"
+							class="navbar-brand" height="20" />
+						</a>
+						<div class="nav-toggle">
+							<button class="btn btn-toggle toggle-sidebar">
+								<i class="gg-menu-right"></i>
+							</button>
+							<button class="btn btn-toggle sidenav-toggler">
+								<i class="gg-menu-left"></i>
+							</button>
+						</div>
+						<button class="topbar-toggler more">
+							<i class="gg-more-vertical-alt"></i>
+						</button>
+					</div>
+					<!-- End Logo Header -->
+				</div>
+				<!-- Navbar Header -->
+				<nav
+					class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+					<div class="container-fluid">
+						<nav
+							class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<button type="submit" class="btn btn-search pe-1">
+										<i class="fa fa-search search-icon"></i>
+									</button>
+								</div>
+								<input type="text" placeholder="Tìm..." class="form-control" />
+							</div>
+						</nav>
+
+						<ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+							<li class="nav-item topbar-icon dropdown hidden-caret"><a
+								class="nav-link dropdown-toggle" href="#" id="notifDropdown"
+								role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false"> <i class="fa fa-bell"></i> <span
+									class="notification">4</span>
+							</a>
+								<ul class="dropdown-menu notif-box animated fadeIn"
+									aria-labelledby="notifDropdown">
+									<li>
+										<div class="dropdown-title">Thông báo</div>
+									</li>
+						</ul></li>
+
+
+							<li class="nav-item topbar-user dropdown hidden-caret"><a
+								class="dropdown-toggle profile-pic" data-bs-toggle="dropdown"
+								href="#" aria-expanded="false">
+									<div class="avatar-sm">
+										<img src="../images/AdminIcon.png" alt="..."
+											class="avatar-img rounded-circle" />
+									</div> <span class="profile-username"> <span class="fw-bold">Quản
+											lý</span>
+								</span>
+							</a>
+								<ul class="dropdown-menu dropdown-user animated fadeIn">
+									<div class="dropdown-user-scroll scrollbar-outer">
+
+										<li>
+											<div class="dropdown-divider"></div> <a
+											class="dropdown-item text-center" href="#">Đăng xuất</a>
+										</li>
+									</div>
+								</ul></li>
+						</ul>
+					</div>
+				</nav>
+				<!-- End Navbar -->
+			</div>
+
+			<div class="container">
+				<div class="page-inner">
+					<div class="page-header">
+						<h3 class="fw-bold mb-3">Danh sách danh mục hàng hóa</h3>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="d-flex align-items-center">
+										<a class="btn btn-primary" href="categories/create"> <i
+											class="fa fa-plus"></i> Thêm danh mục
+										</a>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table id="add-row"
+											class="display table table-striped table-hover">
+											<thead>
+												<tr>
+													<th scope="col">STT</th>
+													<th style="display: none;" scope="col">ID</th>
+													<th scope="col">Tên danh mục</th>
+													<th scope="col">Mô tả</th>
+													<th scope="col">Chức năng</th>
+												</tr>
+											</thead>
+
+											<tbody>
+												<tr th:each="category, stat: ${categoryPage.content}">
+													<td th:text="${stat.count}"></td>
+													<td style="display: none" th:text="${category.categoryid}"></td>
+													<td th:text="${category.categoryname}"></td>
+													<td th:text="${category.description}"></td>
+													<td>
+														<div style="display: inline-flex; gap: 15px;">
+															<a
+																th:href="@{/categories/edit(categoryid=${category.categoryid})}"><i
+																class="fa-solid fa-pen-to-square" style="color: #6d3df5"></i></a>
+															<a
+																th:href="@{/categories/delete(categoryid=${category.categoryid})}"
+																onclick="return confirm('Bạn muốn xóa danh mục này?')">
+																<i class="fa-solid fa-trash" style="color: #f02424;"></i>
+															</a>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="d-flex justify-content-center mt-4">
+											<nav>
+												<ul class="pagination">
+													<li class="page-item"
+														th:classappend="${!categoryPage.hasPrevious()} ? 'disabled'">
+														<a class="page-link"
+														th:href="@{/categories(page=${categoryPage.number - 1}, size=${categoryPage.size})}"
+														th:if="${categoryPage.hasPrevious()}" tabindex="-1">Trước</a>
+													</li>
+
+													<li class="page-item"
+														th:each="i : ${#numbers.sequence(0, categoryPage.totalPages - 1)}"
+														th:classappend="${i == categoryPage.number} ? 'active'">
+														<a class="page-link"
+														th:href="@{/categories(page=${i}, size=${categoryPage.size})}"
+														th:text="${i + 1}"></a>
+													</li>
+
+													<li class="page-item"
+														th:classappend="${!categoryPage.hasNext()} ? 'disabled'">
+														<a class="page-link"
+														th:href="@{/categories(page=${categoryPage.number + 1}, size=${categoryPage.size})}"
+														th:if="${categoryPage.hasNext()}">Tiếp</a>
+													</li>
+												</ul>
+											</nav>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<!--   Core JS Files   -->
+	<script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+	<script src="../assets/js/core/popper.min.js"></script>
+	<script src="../assets/js/core/bootstrap.min.js"></script>
+
+	<!-- jQuery Scrollbar -->
+	<script
+		src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<!-- Datatables -->
+	<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+	<!-- Kaiadmin JS -->
+	<script src="../assets/js/kaiadmin.min.js"></script>
+	<!-- Kaiadmin DEMO methods, don't include it in your project! -->
+	<script src="../assets/js/setting-demo2.js"></script>
+
+</body>
+
+</html>

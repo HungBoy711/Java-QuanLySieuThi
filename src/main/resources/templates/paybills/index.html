@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Datatables - Kaiadmin Bootstrap 5 Admin Dashboard</title>
+<meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+	name="viewport" />
+<link rel="icon" href="../assets/img/kaiadmin/favicon.ico"
+	type="image/x-icon" />
+
+<!-- Fonts and icons -->
+<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+<script>
+	WebFont.load({
+		google : {
+			families : [ "Public Sans:300,400,500,600,700" ]
+		},
+		custom : {
+			families : [ "Font Awesome 5 Solid", "Font Awesome 5 Regular",
+					"Font Awesome 5 Brands", "simple-line-icons", ],
+			urls : [ "../assets/css/fonts.min.css" ],
+		},
+		active : function() {
+			sessionStorage.fonts = true;
+		},
+	});
+</script>
+
+<!-- CSS Files -->
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../assets/css/plugins.min.css" />
+<link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link rel="stylesheet" href="../assets/css/demo.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<style>
+.add-to-cart:active {
+    transform: scale(0.95); /* Thu nhỏ một chút khi nhấn */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng */
+    background-color: #f8f9fa; /* Đổi màu nền */
+    transition: all 0.2s ease; /* Hiệu ứng mượt */
+}
+
+.product-card {
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 10px;
+	text-align: center;
+}
+
+.cart-item {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.total-price {
+	font-weight: bold;
+}
+
+.btn-checkout {
+	background-color: #28a745;
+	color: white;
+	font-size: 1.25rem;
+	width: 100%;
+	padding: 15px;
+}
+
+.btn-checkout:hover {
+	background-color: #218838;
+}
+
+.product-list {
+	margin-bottom: 20px;
+}
+</style>
+<body>
+	<div class="wrapper">
+		<!-- Sidebar -->
+		<div class="sidebar" data-background-color="white">
+			<div class="sidebar-logo">
+				<!-- Logo Header -->
+				<div class="logo-header" data-background-color="red2">
+					<a href="../index.html" class="logo"> <img
+						src="../images/logoStF2.png" alt="navbar brand"
+						class="navbar-brand" width="195" height="50" />
+					</a>
+					<div class="nav-toggle">
+						<button class="btn btn-toggle toggle-sidebar">
+							<i class="gg-menu-right"></i>
+						</button>
+						<button class="btn btn-toggle sidenav-toggler">
+							<i class="gg-menu-left"></i>
+						</button>
+					</div>
+					<button class="topbar-toggler more">
+						<i class="gg-more-vertical-alt"></i>
+					</button>
+				</div>
+				<!-- End Logo Header -->
+			</div>
+			<div class="sidebar-wrapper scrollbar scrollbar-inner">
+				<div class="sidebar-content">
+					<ul class="nav nav-secondary">
+						<li class="nav-item"><a href="/paybills"
+							aria-expanded="false"> <i class="fa-solid fa-cash-register"></i>
+								Thanh toán hóa đơn
+						</a></li>
+						<li class="nav-item"><a href="/histories"
+							aria-expanded="false"> <i class="fa-solid fa-file-invoice"></i>
+								Lịch sử hóa đơn
+						</a></li>
+						<li class="nav-item"><a href="/" aria-expanded="false">
+								<i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- End Sidebar -->
+
+		<div class="main-panel">
+			<div class="main-header">
+				<div class="main-header-logo">
+					<!-- Logo Header -->
+					<div class="logo-header" data-background-color="dark">
+						<a href="../index.html" class="logo"> <img
+							src="../assets/img/kaiadmin/logo_light.svg" alt="navbar brand"
+							class="navbar-brand" height="20" />
+						</a>
+						<div class="nav-toggle">
+							<button class="btn btn-toggle toggle-sidebar">
+								<i class="gg-menu-right"></i>
+							</button>
+							<button class="btn btn-toggle sidenav-toggler">
+								<i class="gg-menu-left"></i>
+							</button>
+						</div>
+						<button class="topbar-toggler more">
+							<i class="gg-more-vertical-alt"></i>
+						</button>
+					</div>
+					<!-- End Logo Header -->
+				</div>
+				<!-- Navbar Header -->
+				<nav
+					class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+					data-background-color="red2">
+					<div class="container-fluid">
+						<nav
+							class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<button type="submit" class="btn btn-search pe-1">
+										<i class="fa fa-search search-icon"></i>
+									</button>
+								</div>
+								<input type="text" placeholder="Tìm..." class="form-control" />
+							</div>
+						</nav>
+
+						<ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+
+
+
+							<li class="nav-item topbar-icon dropdown hidden-caret"><a
+								class="nav-link dropdown-toggle" href="#" id="notifDropdown"
+								role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false"> <i class="fa fa-bell"></i> <span
+									class="notification">4</span>
+							</a>
+								<ul class="dropdown-menu notif-box animated fadeIn"
+									aria-labelledby="notifDropdown">
+									<li>
+										<div class="dropdown-title">Thông báo</div>
+									</li>
+								</ul></li>
+
+
+							<li class="nav-item topbar-user dropdown hidden-caret"><a
+								class="dropdown-toggle profile-pic" data-bs-toggle="dropdown"
+								href="#" aria-expanded="false">
+									<div class="avatar-sm">
+										<img src="../assets/img/profile.jpg" alt="..."
+											class="avatar-img rounded-circle" />
+									</div> <span class="profile-username"> <span class="fw-bold">Nhân
+											viên</span>
+								</span>
+							</a>
+								<ul class="dropdown-menu dropdown-user animated fadeIn">
+									<div class="dropdown-user-scroll scrollbar-outer">
+										<li>
+											<div class="dropdown-divider"></div> <a
+											class="dropdown-item text-center" href="/">Đăng xuất</a>
+										</li>
+									</div>
+								</ul></li>
+						</ul>
+					</div>
+				</nav>
+				<!-- End Navbar -->
+			</div>
+
+			<div class="container ">
+				<div class="page-inner">
+					<div class="row">
+
+						<div class="col-md-8">
+							<div class="row product-list">
+								<form style="margin-bottom: 10px" method="get" action="">
+									<label for="categoryname">Danh mục</label> <select
+										id="categoryname" name="categoryname">
+										<option value="">-- Chọn danh mục --</option>
+										<option th:each="category : ${categoryList}"
+											th:value="${category.categoryname}"
+											th:text="${category.categoryname}"
+											th:selected="${category.categoryname == currentCategoryName}">
+										</option>
+									</select>
+									<button type="submit" class="btn btn-primary btn-sm">Lọc</button>
+								</form>
+
+								<div th:each="product : ${productPage.content}"
+									class="col-md-4 mb-3">
+									<div class="card product-card add-to-cart"
+										th:data-name="${product.productname}"
+										th:data-price="${product.price}">
+										<img th:src="@{'/images/' + ${product.images}}"
+											alt="Ảnh sản phẩm" width="140" height="160"
+											class="card-img-top">
+										<div class="card-body">
+											<h5 class="card-title" th:text="${product.productname}"></h5>
+											<p class="card-text"
+												th:text="'Giá: ' + ${product.price} + ' đ'"></p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="d-flex justify-content-center">
+								<nav>
+									<ul class="pagination">
+
+										<li class="page-item"
+											th:classappend="${!productPage.hasPrevious()} ? 'disabled'">
+											<a class="page-link"
+											th:href="@{/paybills(page=${productPage.number - 1}, size=${productPage.size})}"
+											th:if="${productPage.hasPrevious()}" tabindex="-1">Trước</a>
+										</li>
+
+
+										<li class="page-item"
+											th:each="i : ${#numbers.sequence(0, productPage.totalPages - 1)}"
+											th:classappend="${i == productPage.number} ? 'active'">
+											<a class="page-link"
+											th:href="@{/paybills(page=${i}, size=${productPage.size})}"
+											th:text="${i + 1}"></a>
+										</li>
+
+
+										<li class="page-item"
+											th:classappend="${!productPage.hasNext()} ? 'disabled'">
+											<a class="page-link"
+											th:href="@{/paybills(page=${productPage.number + 1}, size=${productPage.size})}"
+											th:if="${productPage.hasNext()}">Tiếp</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<hr>
+							<div id="cart" class="cart"></div>
+							<div class="d-flex justify-content-between">
+								<h5>Tổng:</h5>
+								<p id="total-price" class="total-price">0 đ</p>
+							</div>
+							<div class="d-flex justify-content-end">
+								<button class="btn btn-dark" id="checkout-btn">Thanh
+									Toán</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End -->
+		</div>
+	</div>
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	    let cart = loadCartFromLocalStorage();
+
+	    function saveCartToLocalStorage() {
+	        localStorage.setItem('cart', JSON.stringify(cart));
+	    }
+
+	    function loadCartFromLocalStorage() {
+	        const cartData = localStorage.getItem('cart');
+	        return cartData ? JSON.parse(cartData) : [];
+	    }
+
+	    function saveInvoiceHistory(invoice) {
+	        const historyData = localStorage.getItem('invoiceHistory');
+	        const invoiceHistory = historyData ? JSON.parse(historyData) : [];
+	        invoiceHistory.push(invoice);
+	        localStorage.setItem('invoiceHistory', JSON.stringify(invoiceHistory));
+	    }
+
+	    function loadInvoiceHistory() {
+	        const historyData = localStorage.getItem('invoiceHistory');
+	        return historyData ? JSON.parse(historyData) : [];
+	    }
+
+	    function renderCart() {
+	        const cartContainer = document.getElementById('cart');
+	        const totalPriceElement = document.getElementById('total-price');
+
+	        cartContainer.innerHTML = '';
+	        let totalPrice = 0;
+
+	        cart.forEach((item, index) => {
+	            const itemElement = document.createElement('div');
+	            itemElement.classList.add('cart-item');
+	            itemElement.innerHTML = `
+	                <div class="d-flex justify-content-between">
+	                    <p style="margin-right: 25px;">${item.name} x ${item.quantity}</p>
+	                    <p style="margin-left: 25px;">${item.price * item.quantity} đ</p>
+	                </div>
+	                <button class="remove-item" data-index="${index}" style="border: none; background: none; outline: none; cursor: pointer;">
+	                <i class="fa-solid fa-trash-can" style="color: #696363;"></i>
+	            	</button>
+	            `;
+	            cartContainer.appendChild(itemElement);
+
+	            totalPrice += item.price * item.quantity;
+	        });
+
+	        totalPriceElement.textContent = totalPrice + ' đ';
+
+	        const removeButtons = document.querySelectorAll('.remove-item');
+	        removeButtons.forEach(button => {
+	            button.addEventListener('click', function () {
+	                const index = this.getAttribute('data-index');
+	                removeFromCart(index);
+	            });
+	        });
+	    }
+
+	    function addToCart(name, price) {
+	        const existingItem = cart.find(item => item.name === name);
+
+	        if (existingItem) {
+	            existingItem.quantity++;
+	        } else {
+	            cart.push({ name, price, quantity: 1 });
+	        }
+
+	        saveCartToLocalStorage();
+	        renderCart();
+	    }
+
+	    function removeFromCart(index) {
+	        cart.splice(index, 1);
+	        saveCartToLocalStorage();
+	        renderCart();
+	    }
+
+	    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+	    addToCartButtons.forEach(button => {
+	        button.addEventListener('click', function () {
+	            const name = this.getAttribute('data-name');
+	            const price = parseFloat(this.getAttribute('data-price'));
+	            addToCart(name, price);
+	        });
+	    });
+
+	    document.getElementById('checkout-btn').addEventListener('click', function () {
+	        if (cart.length === 0) {
+	            alert('Giỏ hàng trống, không thể thanh toán!');
+	            return;
+	        }
+	        const invoiceID ='HD-' + Math.floor(1000 + Math.random() * 9000) ; 
+	        const invoice = {
+	        	invoiceID: invoiceID, 
+	        	time: new Date().toLocaleTimeString(),
+	            date: new Date().toLocaleDateString(),
+	            items: cart,
+	            total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
+	        };
+
+	        saveInvoiceHistory(invoice);
+
+	        let invoiceContent = `
+	            <h2>Hùng Mart</h2>
+	            <p>65 - Đinh Công Tráng - Lê Mao - Vinh.</p>
+	            <h3>Hóa Đơn</h3>
+	            <table border="1" cellspacing="0" cellpadding="5" style="width:100%; text-align:left;">
+	                <thead>
+	                    <tr>
+	                        <th>Sản phẩm</th>
+	                        <th>Số lượng</th>
+	                        <th>Giá</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	        `;
+
+	        invoice.items.forEach(item => {
+	            invoiceContent += `
+	                <tr>
+	                    <td>${item.name}</td>
+	                    <td>${item.quantity}</td>
+	                    <td>${item.price * item.quantity} đ</td>
+	                </tr>
+	            `;
+	        });
+
+	        invoiceContent += `
+	                </tbody>
+	                <tfoot>
+	                    <tr>
+	                        <td colspan="2"><strong>Tổng cộng:</strong></td>
+	                        <td><strong>${invoice.total.toLocaleString()} đ</strong></td>
+	                    </tr>
+	                </tfoot>
+	            </table>
+	            <p>Xin cảm ơn Quý Khách!</p>
+	        `;
+
+	        const printWindow = window.open('', '', 'width=800,height=600');
+	        printWindow.document.write(`
+	            <html>
+	                <head>
+	                    <title>Hóa Đơn</title>
+	                    <style>
+	                        body { font-family: Arial, sans-serif; margin: 20px; }
+	                        h2 { text-align: center; }
+	                        table { border-collapse: collapse; width: 100%; }
+	                        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+	                        tfoot { font-weight: bold; }
+	                    </style>
+	                </head>
+	                <body>
+	                    ${invoiceContent}
+	                </body>
+	            </html>
+	        `);
+	        printWindow.document.close();
+	        printWindow.print();
+
+	        cart = [];
+	        saveCartToLocalStorage();
+	        renderCart();
+	    });
+
+	    renderCart();
+	});
+</script>
+
+
+	<!--   Core JS Files   -->
+	<script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+	<script src="../assets/js/core/popper.min.js"></script>
+	<script src="../assets/js/core/bootstrap.min.js"></script>
+
+	<!-- jQuery Scrollbar -->
+	<script
+		src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<!-- Datatables -->
+	<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+	<!-- Kaiadmin JS -->
+	<script src="../assets/js/kaiadmin.min.js"></script>
+	<!-- Kaiadmin DEMO methods, don't include it in your project! -->
+	<script src="../assets/js/setting-demo2.js"></script>
+
+</body>
+
+</html>
